@@ -105,10 +105,35 @@ export default function Hero() {
               </h1>
 
 
-              <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12">
-                <p className="text-muted text-xl max-w-md leading-relaxed text-center lg:text-left font-light">
-                  India&apos;s premiere cinematic production studio since 2016. High-velocity storytelling for Sports, Corporate, and Social Impact.
-                </p>
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12 w-full">
+                <div className="flex items-start gap-8 max-w-xl">
+                  {/* Architectural Anchor Line */}
+                  <motion.div 
+                    initial={{ height: 0 }}
+                    animate={{ height: "auto" }}
+                    transition={{ duration: 1.5, delay: 1 }}
+                    className="w-px bg-gradient-to-b from-primary via-primary/50 to-transparent self-stretch hidden md:block" 
+                  />
+                  
+                  <p className="text-muted text-xl md:text-2xl leading-relaxed text-center lg:text-left font-light flex flex-wrap gap-x-[0.3em]">
+                    {"India's premiere cinematic production studio since 2016. High-velocity storytelling for Sports, Corporate, and Social Impact.".split(" ").map((word, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        transition={{ 
+                          duration: 0.8, 
+                          delay: 1.2 + (i * 0.05),
+                          ease: [0.16, 1, 0.3, 1]
+                        }}
+                        className="inline-block"
+                      >
+                        {word}
+                      </motion.span>
+                    ))}
+                  </p>
+                </div>
+
 
                 <div className="flex flex-wrap items-center gap-8">
                   <div 
