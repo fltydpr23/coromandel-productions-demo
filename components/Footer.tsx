@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Globe, Mail, Instagram, X } from "lucide-react";
+import { Globe, Mail, Instagram, Youtube, X } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,12 +24,42 @@ export default function Footer() {
             </p>
             <div className="flex gap-6">
               {[
-                { icon: Globe, href: "#" },
-                { icon: Mail, href: "mailto:contact@coromandel-productions.com" },
-                { icon: Instagram, href: "https://www.instagram.com/coromandel_productions/" },
-                { icon: X, href: "#" }
+                { 
+                  icon: Instagram, 
+                  href: "https://www.instagram.com/coromandel_productions/" 
+                },
+                { 
+                  icon: Youtube, 
+                  href: "https://www.youtube.com/channel/UCrM0LAHMFp-Umq56bCRVMbA" 
+                },
+                { 
+                  icon: ({ size }: { size: number }) => (
+                    <svg 
+                      width={size} 
+                      height={size} 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round"
+                    >
+                      <path d="M10 13c3.15 0 5-1.85 5-5s-1.85-5-5-5-5 1.85-5 5 1.85 5 5 5z" />
+                      <path d="M10 13c-3.15 0-5 1.85-5 5" />
+                      <path d="M15 8c0 3.15 1.85 5 5 5s5-1.85 5-5-1.85-5-5-5-5 1.85-5 5z" />
+                    </svg>
+                  ),
+                  href: "https://vimeo.com/coromandelproductions",
+                  isCustom: true
+                }
               ].map((item, i) => (
-                <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors">
+                <a 
+                  key={i} 
+                  href={item.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-muted hover:text-primary transition-colors"
+                >
                   <item.icon size={20} />
                 </a>
               ))}
