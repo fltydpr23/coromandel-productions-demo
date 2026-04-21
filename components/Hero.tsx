@@ -114,7 +114,9 @@ export default function Hero() {
                       <Play size={14} className="fill-current" />
                     </div>
                     Our Work
+                  </a>
                   <div className="hidden xl:flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl backdrop-blur-xl">
+
                     <div className="flex flex-col">
                       <span className="text-[8px] uppercase tracking-widest text-primary font-bold mb-1">UK Partner Studio</span>
                       <span className="font-serif text-lg text-white leading-none tracking-tight">Barn Media <span className="text-primary italic">UK</span></span>
