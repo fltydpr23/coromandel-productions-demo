@@ -72,12 +72,35 @@ export default function Services() {
           </div>
           
           <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="hidden lg:block w-40 h-40 border border-white/10 rounded-full flex items-center justify-center relative group cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            className="hidden lg:block w-52 h-52 relative group cursor-pointer"
           >
-            <div className="absolute inset-0 border border-primary/20 rounded-full border-dashed animate-[spin_20s_linear_infinite]" />
-            <ArrowUpRight className="text-accent group-hover:text-primary transition-colors" size={40} />
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0"
+            >
+              <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+                <defs>
+                  <path
+                    id="circlePath"
+                    d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0"
+                  />
+                </defs>
+                <text className="text-[6.5px] uppercase tracking-[0.3em] font-black fill-primary/30 group-hover:fill-primary transition-colors duration-700">
+                  <textPath href="#circlePath">
+                    TRUTH BEYOND THE LENS • ESTABLISHED 2016 • CINEMATIC STORIES •
+                  </textPath>
+                </text>
+              </svg>
+            </motion.div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-32 h-32 rounded-full border border-white/5 flex items-center justify-center backdrop-blur-sm group-hover:border-primary/20 transition-colors duration-700">
+                <ArrowUpRight className="text-accent group-hover:text-primary transition-all duration-700 group-hover:scale-110" size={40} />
+              </div>
+            </div>
           </motion.div>
+
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden shadow-2xl">
