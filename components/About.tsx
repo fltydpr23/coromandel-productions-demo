@@ -34,17 +34,20 @@ export default function About() {
               <p>
                 Launched in 2016 by award-winning filmmaker <span className="text-foreground font-medium">Veeru Murugappan</span>, 
                 Coromandel Productions emerged with a singular vision: to tell stories that resonate 
-                beyond the surface level.
+                beyond the surface level. Today, we are India&apos;s specialist studio based in 
+                <span className="text-foreground font-medium"> Bangalore, Chennai, and Singapore.</span>
               </p>
               <p>
-                In 2020, we solidified our international presence by becoming co-owners of 
-                <strong> Barn Media</strong>, a premier UK-based production house. We bridge 
-                Asian storytelling with European production standards.
+                In 2020, we solidified our international presence by becoming <span className="text-primary italic font-medium">co-owners of Barn Media</span>, 
+                a premier UK-based production house. This partnership is a defining differentiator, 
+                allowing us to bridge Asian storytelling with world-class European production standards.
               </p>
               <p>
                 Today, we specialize in high-impact sports features, corporate documentaries, 
-                and social impact stories. We don't just point cameras; we find the heart.
+                and social impact stories. We don&apos;t just point cameras; we build the architectural 
+                frameworks that allow truth to speak.
               </p>
+
             </div>
           </motion.div>
 

@@ -15,9 +15,41 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Coromandel Productions | Collective Cinematic Intelligence",
-  description: "Architecting cinematic legacies for global leaders. High-velocity storytelling for Sports, Corporate, and Social Impact. Driven by Truth. Beyond the Lens.",
+  title: "Coromandel Productions | Sports & Corporate Video Production | Bangalore · Chennai · Singapore",
+  description:
+    "Award-winning cinematic production studio founded in 2016. We craft sports films, corporate documentaries and social impact stories for global brands — trusted by ICC, Infosys and the World Bank. Based in Bangalore, Chennai and Singapore. Booking Q3 2026.",
+  keywords: [
+    "video production company Bangalore",
+    "corporate video production Chennai",
+    "sports film production India",
+    "documentary production Bangalore",
+    "social impact films India",
+  ],
+  openGraph: {
+    title: "Coromandel Productions — Cinematic Stories for Global Brands",
+    description:
+      "Sports features. Corporate identity films. Social impact documentaries. Since 2016, Coromandel has told stories that move the world — for ICC, Infosys, the World Bank, and BVB Dortmund.",
+    url: "https://coromandel-productions.com",
+    siteName: "Coromandel Productions",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Coromandel Productions — cinematic sports and corporate film production studio",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Coromandel Productions — Stories Unbound",
+    description:
+      "Sports films. Corporate docs. Social impact stories. Trusted by ICC, Infosys & World Bank. Based in India, Singapore & UK. Booking Q3 2026.",
+    images: ["/og-image.jpg"],
+  },
 };
+
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 

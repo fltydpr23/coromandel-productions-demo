@@ -43,7 +43,7 @@ export default function Hero() {
             playsInline
             className="w-full h-full object-cover saturate-[0.8] contrast-[1.1]"
           >
-            <source src="/videos/coromandel-showreel.mp4" type="video/mp4" />
+            <source src="/videos/coromandel-showreel-cut.mp4" type="video/mp4" />
           </video>
           
           {/* Dynamic Darkening Overlay */}
@@ -71,7 +71,7 @@ export default function Hero() {
               <div className="inline-flex items-center gap-3 mb-10 bg-white/5 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 <span className="text-primary uppercase tracking-[0.4em] text-[10px] font-bold py-1">
-                  Hyper-Production Studio
+                  Bangalore · Chennai · Singapore
                 </span>
               </div>
 
@@ -85,7 +85,7 @@ export default function Hero() {
 
               <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12">
                 <p className="text-muted text-xl max-w-md leading-relaxed text-center lg:text-left font-light">
-                  Cinematic narratives since 2016. High-velocity storytelling for Sports, Corporate, and Social Impact.
+                  India&apos;s premiere cinematic production studio since 2016. High-velocity storytelling for Sports, Corporate, and Social Impact.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-8">
@@ -114,7 +114,12 @@ export default function Hero() {
                       <Play size={14} className="fill-current" />
                     </div>
                     Our Work
-                  </a>
+                  <div className="hidden xl:flex items-center gap-4 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl backdrop-blur-xl">
+                    <div className="flex flex-col">
+                      <span className="text-[8px] uppercase tracking-widest text-primary font-bold mb-1">UK Partner Studio</span>
+                      <span className="font-serif text-lg text-white leading-none tracking-tight">Barn Media <span className="text-primary italic">UK</span></span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
