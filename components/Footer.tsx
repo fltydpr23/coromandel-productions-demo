@@ -19,8 +19,7 @@ export default function Footer() {
               COROMANDEL<span className="text-primary italic ml-1">PRODUCTIONS</span>
             </Link>
             <p className="text-muted max-w-sm leading-relaxed mb-4">
-              An award-winning video production house crafting cinematic legacies from Singapore. 
-              Proud co-owners of Barn Media, UK.
+              Architecting cinematic legacies for global leaders. High-velocity storytelling for Sports, Corporate, and Social Impact.
             </p>
             <p className="font-serif text-lg text-primary italic mb-8">
               Stories from the heart. Beyond the lens.

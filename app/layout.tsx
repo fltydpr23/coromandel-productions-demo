@@ -15,8 +15,8 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Coromandel Productions — Stories from the Heart. Beyond the Lens.",
-  description: "Award-winning video production house in Singapore. Sports features, corporate films, social impact stories, documentaries & original content.",
+  title: "Coromandel Productions | Collective Cinematic Intelligence",
+  description: "Architecting cinematic legacies for global leaders. High-velocity storytelling for Sports, Corporate, and Social Impact. Driven by Truth. Beyond the Lens.",
 };
 
 import { ThemeProvider } from "@/components/ThemeProvider";
