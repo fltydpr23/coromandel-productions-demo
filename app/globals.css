@@ -29,7 +29,9 @@
     40% { transform: translate(-2px, -2px); }
     60% { transform: translate(2px, 2px); }
     80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
   }
 }
 
@@ -101,4 +103,19 @@
   opacity: 1;
   transform: scale(1);
   transition: opacity 800ms, transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer utilities {
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(240, 195, 83, 1) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(240, 195, 83, 1) 100%
+    );
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }

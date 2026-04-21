@@ -76,12 +76,34 @@ export default function Hero() {
               </div>
 
               <h1 className="font-serif text-6xl xs:text-7xl md:text-[10rem] lg:text-[14rem] font-normal leading-[0.8] text-foreground mb-12 tracking-tighter mix-blend-difference">
-                STORIES <br />
-                <span className="italic font-light text-accent flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8">
+                <div className="flex flex-wrap justify-center lg:justify-start overflow-hidden py-4">
+                  {"STORIES".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ y: "100%", opacity: 0, filter: "blur(20px)" }}
+                      animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                      transition={{ 
+                        duration: 1, 
+                        delay: i * 0.1, 
+                        ease: [0.16, 1, 0.3, 1] 
+                      }}
+                      className="inline-block"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </div>
+                <motion.span 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1.5, delay: 0.8, ease: "easeOut" }}
+                  className="italic font-light text-accent flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8 bg-gradient-to-r from-accent via-white to-accent bg-[length:200%_auto] animate-shimmer bg-clip-text text-transparent"
+                >
                   UNBOUND
                   <div className="hidden md:block w-32 h-32 border border-white/10 rounded-full border-dashed animate-[spin_20s_linear_infinite]" />
-                </span>
+                </motion.span>
               </h1>
+
 
               <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12">
                 <p className="text-muted text-xl max-w-md leading-relaxed text-center lg:text-left font-light">
