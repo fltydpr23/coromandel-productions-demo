@@ -47,10 +47,14 @@ export default function Footer() {
           <div>
             <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-foreground mb-8">Legal</h4>
             <ul className="space-y-4">
-              {["Privacy Policy", "Cookie Policy", "Health & Safety", "Insurance"].map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-xs uppercase tracking-widest text-muted hover:text-primary transition-colors">
-                    {link}
+              {[
+                { name: "Privacy Policy", href: "/privacy" },
+                { name: "Cookie Policy", href: "/cookies" },
+                { name: "Health & Safety", href: "/health-and-safety" }
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link href={link.href} className="text-xs uppercase tracking-widest text-muted hover:text-primary transition-colors">
+                    {link.name}
                   </Link>
                 </li>
               ))}
