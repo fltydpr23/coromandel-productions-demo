@@ -1,14 +1,43 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Zap } from "lucide-react";
 
 export default function Contact() {
   const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    categories: [] as string[]
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API call to send to contact@coromandel-productions.com
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    console.log("Enquiry sent to contact@coromandel-productions.com:", formData);
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+  };
+
+  const toggleCategory = (cat: string) => {
+    setFormData(prev => ({
+      ...prev,
+      categories: prev.categories.includes(cat) 
+        ? prev.categories.filter(c => c !== cat)
+        : [...prev.categories, cat]
+    }));
+  };
 
   const contactInfo = [
-    { id: "email", icon: Mail, label: "Email Us", value: "hello@coromandel.sg", sub: "Response within 24h" },
+    { id: "email", icon: Mail, label: "Email Us", value: "contact@coromandel-productions.com", sub: "Response within 24h" },
     { id: "phone", icon: Phone, label: "Call Us", value: "+65 6812 5888", sub: "Singapore HQ" },
     { id: "location", icon: MapPin, label: "Our Studio", value: "International Plaza, SG", sub: "Global Partnership" },
   ];
@@ -79,62 +108,112 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-12 xl:col-span-7"
           >
-            <div className="bg-surface-2 border border-white/5 p-12 md:p-20 rounded-[3rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+            <div className="bg-surface-2 border border-white/5 p-12 md:p-20 rounded-[3rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] relative overflow-hidden group min-h-[600px] flex flex-col justify-center">
               {/* Internal Accent Glow */}
               <div className="absolute -top-32 -right-32 w-64 h-64 bg-primary/10 blur-[100px] rounded-full group-hover:bg-primary/20 transition-all duration-1000" />
               
-              <form className="space-y-12 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                  <div className="space-y-4">
-                    <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Full Name</label>
-                    <input 
-                      type="text" 
-                      placeholder="YOUR NAME" 
-                      className="w-full bg-transparent border-b border-border pb-6 focus:outline-none focus:border-primary transition-colors text-foreground font-serif text-2xl placeholder:text-muted/30"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Email Address</label>
-                    <input 
-                      type="email" 
-                      placeholder="YOUR@EMAIL.COM" 
-                      className="w-full bg-transparent border-b border-border pb-6 focus:outline-none focus:border-primary transition-colors text-foreground font-serif text-2xl placeholder:text-muted/30"
-                    />
-                  </div>
-                </div>
+              <AnimatePresence mode="wait">
+                {!isSubmitted ? (
+                  <motion.form 
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onSubmit={handleSubmit}
+                    className="space-y-12 relative z-10"
+                  >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                      <div className="space-y-4">
+                        <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Full Name</label>
+                        <input 
+                          required
+                          type="text" 
+                          placeholder="YOUR NAME" 
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          className="w-full bg-transparent border-b border-border pb-6 focus:outline-none focus:border-primary transition-colors text-foreground font-serif text-2xl placeholder:text-muted/30"
+                        />
+                      </div>
+                      <div className="space-y-4">
+                        <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Email Address</label>
+                        <input 
+                          required
+                          type="email" 
+                          placeholder="YOUR@EMAIL.COM" 
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          className="w-full bg-transparent border-b border-border pb-6 focus:outline-none focus:border-primary transition-colors text-foreground font-serif text-2xl placeholder:text-muted/30"
+                        />
+                      </div>
+                    </div>
 
-                <div className="space-y-6">
-                  <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">What are we building?</label>
-                  <div className="flex flex-wrap gap-4 pt-2">
-                    {["Sports", "Corporate", "Social", "Doc", "Scripted"].map((cat) => (
-                      <label key={cat} className="group relative cursor-pointer">
-                        <input type="checkbox" className="sr-only peer" />
-                        <div className="px-6 py-3 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-muted transition-all duration-500 peer-checked:bg-primary peer-checked:text-background peer-checked:border-primary peer-checked:shadow-[0_0_20px_rgba(241,111,36,0.4)]">
-                          {cat}
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                </div>
+                    <div className="space-y-6">
+                      <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">What are we building?</label>
+                      <div className="flex flex-wrap gap-4 pt-2">
+                        {["Sports", "Corporate", "Social", "Doc", "Scripted"].map((cat) => (
+                          <label key={cat} className="group relative cursor-pointer">
+                            <input 
+                              type="checkbox" 
+                              className="sr-only peer" 
+                              checked={formData.categories.includes(cat)}
+                              onChange={() => toggleCategory(cat)}
+                            />
+                            <div className="px-6 py-3 border border-white/10 rounded-full text-[10px] uppercase tracking-widest text-muted transition-all duration-500 peer-checked:bg-primary peer-checked:text-background peer-checked:border-primary peer-checked:shadow-[0_0_20px_rgba(241,111,36,0.4)]">
+                              {cat}
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
 
-                <div className="space-y-4">
-                  <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Tell us about your project</label>
-                  <textarea 
-                    rows={4} 
-                    placeholder="Tell us what you're thinking..." 
-                    className="w-full bg-transparent border-b border-border pb-6 focus:outline-none focus:border-primary transition-colors text-foreground font-serif text-2xl placeholder:text-muted/30 resize-none"
-                  />
-                </div>
+                    <div className="space-y-4">
+                      <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Tell us about your project</label>
+                      <textarea 
+                        required
+                        rows={4} 
+                        placeholder="Tell us what you're thinking..." 
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        className="w-full bg-transparent border-b border-border pb-6 focus:outline-none focus:border-primary transition-colors text-foreground font-serif text-2xl placeholder:text-muted/30 resize-none"
+                      />
+                    </div>
 
-                <motion.button 
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-primary text-background py-8 rounded-full text-[12px] font-black uppercase tracking-[0.5em] hover:bg-accent transition-all duration-700 flex items-center justify-center gap-6 shadow-[0_0_40px_rgba(241,111,36,0.3)] hover:shadow-[0_0_40px_rgba(240,195,83,0.3)]"
-                >
-                  SEND MESSAGE
-                  <Send size={18} className="animate-[bounce_2s_infinite]" />
-                </motion.button>
-              </form>
+                    <motion.button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full bg-primary text-background py-8 rounded-full text-[12px] font-black uppercase tracking-[0.5em] hover:bg-accent transition-all duration-700 flex items-center justify-center gap-6 shadow-[0_0_40px_rgba(241,111,36,0.3)] hover:shadow-[0_0_40px_rgba(240,195,83,0.3)] disabled:opacity-50"
+                    >
+                      {isSubmitting ? "SENDING..." : "SEND MESSAGE"}
+                      <Send size={18} className={isSubmitting ? "animate-pulse" : "animate-[bounce_2s_infinite]"} />
+                    </motion.button>
+                  </motion.form>
+                ) : (
+                  <motion.div 
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center space-y-8 py-20"
+                  >
+                    <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-10 border border-primary/30">
+                      <Zap size={40} className="text-primary" />
+                    </div>
+                    <h3 className="font-serif text-5xl md:text-6xl text-foreground tracking-tighter">
+                      MESSAGE <span className="italic text-primary">SENT.</span>
+                    </h3>
+                    <p className="text-muted text-xl max-w-sm mx-auto leading-relaxed">
+                      Your vision has been received. We'll be in touch with you at <span className="text-foreground font-bold">{formData.email}</span> shortly.
+                    </p>
+                    <button 
+                      onClick={() => setIsSubmitted(false)}
+                      className="text-[10px] uppercase tracking-[0.4em] text-primary font-black hover:text-accent transition-colors"
+                    >
+                      Send another message
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         </div>

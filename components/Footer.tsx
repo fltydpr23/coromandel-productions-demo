@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Globe, Mail, Share2, X } from "lucide-react";
+import { Globe, Mail, Instagram, X } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,9 +23,14 @@ export default function Footer() {
               Proud co-owners of Barn Media, UK.
             </p>
             <div className="flex gap-6">
-              {[Globe, Mail, Share2, X].map((Icon, i) => (
-                <a key={i} href="#" className="text-muted hover:text-primary transition-colors">
-                  <Icon size={20} />
+              {[
+                { icon: Globe, href: "#" },
+                { icon: Mail, href: "mailto:contact@coromandel-productions.com" },
+                { icon: Instagram, href: "https://www.instagram.com/coromandel_productions/" },
+                { icon: X, href: "#" }
+              ].map((item, i) => (
+                <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-primary transition-colors">
+                  <item.icon size={20} />
                 </a>
               ))}
             </div>
