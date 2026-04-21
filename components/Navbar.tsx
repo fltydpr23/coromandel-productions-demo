@@ -37,7 +37,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4 group cursor-pointer">
             <div className="relative w-40 h-16 transition-transform duration-500 group-hover:scale-105">
               <Image
-                src="/logo-modern.png"
+                src="/logo.png"
                 alt="Coromandel Productions"
                 fill
                 className="object-contain"
@@ -96,7 +96,7 @@ export default function Navbar() {
             <div className="flex justify-between items-center mb-20">
               <div className="relative w-40 h-12">
                 <Image
-                  src="/logo-modern.png"
+                  src="/logo.png"
                   alt="Coromandel"
                   fill
                   className="object-contain"
