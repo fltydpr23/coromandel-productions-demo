@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #FDFCE8; /* Light warm creamy beige as in screenshot */
+  --color-foreground: #000000;
+  
+  --color-primary: #000000;
+  --color-accent: #8EC2C2;    /* Soft Teal from screenshot */
+  --color-accent-dark: #6a9a9a;
+  
+  --color-surface: #ffffff;
+  --color-surface-2: #F3F2D4;
+  --color-muted: #666666;
+  --color-border: #000000;
+
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-display: var(--font-display), sans-serif;
+  
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-accent/30;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display font-extrabold tracking-tight text-foreground;
+  }
+}
+
+@layer utilities {
+  .brutalist-card {
+    @apply bg-white border-2 border-black rounded-[2.5rem] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1;
+  }
+  
+  .pill-button {
+    @apply px-8 py-4 bg-black text-white rounded-full font-bold uppercase tracking-widest text-[11px] transition-all hover:scale-105 active:scale-95;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}

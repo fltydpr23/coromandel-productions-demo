@@ -1,0 +1,143 @@
+"use client";
+
+import React, { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { Play, ArrowRight, MousePointer2 } from "lucide-react";
+
+export default function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  // Video Background Transforms
+  const videoScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1.2]);
+  const videoOverlayOpacity = useTransform(scrollYProgress, [0, 0.4, 0.6], [0.2, 0.4, 0.7]);
+  const containerScale = useTransform(scrollYProgress, [0.8, 1], [1, 0.9]);
+  const containerOpacity = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
+
+  // Content Transforms (The Reveal)
+  const textOpacity = useTransform(scrollYProgress, [0.15, 0.4, 0.7, 0.85], [0, 1, 1, 0]);
+  const textY = useTransform(scrollYProgress, [0.15, 0.4, 0.7, 0.85], [100, 0, 0, -50]);
+  
+  // Smooth Springs
+  const smoothVideoScale = useSpring(videoScale, { stiffness: 60, damping: 25 });
+  const smoothTextOpacity = useSpring(textOpacity, { stiffness: 60, damping: 25 });
+  const smoothTextY = useSpring(textY, { stiffness: 60, damping: 25 });
+
+  return (
+    <section ref={containerRef} id="hero" className="relative h-[250vh] bg-background">
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {/* Dynamic Background Wrapper */}
+        <motion.div 
+          style={{ scale: smoothVideoScale, opacity: containerOpacity }}
+          className="absolute inset-0 z-0 origin-center"
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover saturate-[0.8] contrast-[1.1]"
+          >
+            <source src="/videos/coromandel-showreel.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Dynamic Darkening Overlay */}
+          <motion.div 
+            style={{ opacity: videoOverlayOpacity }}
+            className="absolute inset-0 bg-background z-10" 
+          />
+          
+          {/* Gradient Accents */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(241,111,36,0.1),transparent_50%)] z-10" />
+        </motion.div>
+
+        {/* Content Layer */}
+        <motion.div 
+          style={{ 
+            opacity: smoothTextOpacity, 
+            y: smoothTextY,
+            scale: containerScale
+          }}
+          className="container mx-auto px-6 relative z-20 h-full flex flex-col justify-center pt-20"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-[-10vh]">
+            <div className="lg:col-span-12 text-center lg:text-left">
+              <div className="inline-flex items-center gap-3 mb-10 bg-white/5 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-primary uppercase tracking-[0.4em] text-[10px] font-bold py-1">
+                  Hyper-Production Studio
+                </span>
+              </div>
+
+              <h1 className="font-serif text-7xl md:text-[10rem] lg:text-[14rem] font-normal leading-[0.8] text-foreground mb-12 tracking-tighter mix-blend-difference">
+                STORIES <br />
+                <span className="italic font-light text-accent flex items-center justify-center lg:justify-start gap-8">
+                  UNBOUND
+                  <div className="hidden lg:block w-32 h-32 border border-white/10 rounded-full border-dashed animate-[spin_20s_linear_infinite]" />
+                </span>
+              </h1>
+
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12">
+                <p className="text-muted text-xl max-w-md leading-relaxed text-center lg:text-left font-light">
+                  Cinematic narratives since 2016. High-velocity storytelling for Sports, Corporate, and Social Impact.
+                </p>
+
+                <div className="flex flex-wrap items-center gap-8">
+                  <div 
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className="relative"
+                  >
+                    <a
+                      href="#contact"
+                      className="relative z-10 flex items-center gap-4 bg-primary text-background px-12 py-6 rounded-full text-xs font-bold uppercase tracking-[0.2em] transition-transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(241,111,36,0.3)]"
+                    >
+                      Start Production
+                      <ArrowRight className="w-5 h-5" />
+                    </a>
+                    {isHovered && (
+                      <div className="absolute -inset-4 bg-primary/20 blur-2xl rounded-full -z-0" />
+                    )}
+                  </div>
+                  
+                  <a
+                    href="#work"
+                    className="group flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] hover:text-accent transition-colors"
+                  >
+                    <div className="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center group-hover:border-accent group-hover:scale-110 transition-all duration-500">
+                      <Play size={14} className="fill-current" />
+                    </div>
+                    Our Work
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Initial Scroll Hint */}
+        <motion.div 
+          style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-30"
+        >
+          <span className="text-[9px] uppercase tracking-[0.5em] text-white/40 font-bold mb-4">Discover Legacy</span>
+          <div className="relative w-[1px] h-24 bg-gradient-to-b from-primary to-transparent overflow-hidden">
+             <motion.div 
+               animate={{ y: [0, 96] }}
+               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+               className="absolute top-0 left-0 w-full h-8 bg-white"
+             />
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-30" />
+    </section>
+  );
+}
