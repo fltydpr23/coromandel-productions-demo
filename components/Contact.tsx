@@ -8,9 +8,9 @@ export default function Contact() {
   const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
 
   const contactInfo = [
-    { id: "email", icon: Mail, label: "Direct Transmission", value: "hello@coromandel.sg", sub: "Response within 24h" },
-    { id: "phone", icon: Phone, label: "Business Liaison", value: "+65 6812 5888", sub: "Singapore HQ" },
-    { id: "location", icon: MapPin, label: "Command Center", value: "International Plaza, SG", sub: "Global Partnership" },
+    { id: "email", icon: Mail, label: "Email Us", value: "hello@coromandel.sg", sub: "Response within 24h" },
+    { id: "phone", icon: Phone, label: "Call Us", value: "+65 6812 5888", sub: "Singapore HQ" },
+    { id: "location", icon: MapPin, label: "Our Studio", value: "International Plaza, SG", sub: "Global Partnership" },
   ];
 
   return (
@@ -30,7 +30,7 @@ export default function Contact() {
             >
               <Zap size={12} className="text-primary animate-pulse" />
               <span className="text-primary uppercase tracking-[0.5em] text-[9px] font-black py-1">
-                Initiate Project
+                Start a Conversation
               </span>
             </motion.div>
 
@@ -86,7 +86,7 @@ export default function Contact() {
               <form className="space-y-12 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div className="space-y-4">
-                    <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Operator ID</label>
+                    <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Full Name</label>
                     <input 
                       type="text" 
                       placeholder="YOUR NAME" 
@@ -94,7 +94,7 @@ export default function Contact() {
                     />
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Comm Channel</label>
+                    <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Email Address</label>
                     <input 
                       type="email" 
                       placeholder="YOUR@EMAIL.COM" 
@@ -104,7 +104,7 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-6">
-                  <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Mission Parameters</label>
+                  <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">What are we building?</label>
                   <div className="flex flex-wrap gap-4 pt-2">
                     {["Sports", "Corporate", "Social", "Doc", "Scripted"].map((cat) => (
                       <label key={cat} className="group relative cursor-pointer">
@@ -118,10 +118,10 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-4">
-                  <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Conceptual Vision</label>
+                  <label className="text-[10px] uppercase tracking-[0.5em] text-primary font-black">Tell us about your project</label>
                   <textarea 
                     rows={4} 
-                    placeholder="DESCRIBE THE TRANSMISSION..." 
+                    placeholder="Tell us what you're thinking..." 
                     className="w-full bg-transparent border-b border-border pb-6 focus:outline-none focus:border-primary transition-colors text-foreground font-serif text-2xl placeholder:text-muted/30 resize-none"
                   />
                 </div>
@@ -131,7 +131,7 @@ export default function Contact() {
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-primary text-background py-8 rounded-full text-[12px] font-black uppercase tracking-[0.5em] hover:bg-accent transition-all duration-700 flex items-center justify-center gap-6 shadow-[0_0_40px_rgba(241,111,36,0.3)] hover:shadow-[0_0_40px_rgba(240,195,83,0.3)]"
                 >
-                  EXECUTE TRANSMISSION
+                  SEND MESSAGE
                   <Send size={18} className="animate-[bounce_2s_infinite]" />
                 </motion.button>
               </form>

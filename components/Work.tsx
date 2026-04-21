@@ -105,8 +105,8 @@ export default function Work() {
           className="mt-24 flex flex-col items-center text-center"
         >
           <div className="w-px h-20 bg-gradient-to-b from-primary to-transparent mb-10" />
-          <h4 className="font-serif text-4xl text-foreground mb-8">
-            THIRSTY FOR <span className="italic text-primary">MORE?</span>
+          <h4 className="font-serif text-4xl text-foreground mb-8 text-center px-4">
+            WANT TO SEE THE <span className="italic text-primary">FULL RANGE?</span>
           </h4>
           <a
             href="https://vimeo.com/coromandelproductions"
