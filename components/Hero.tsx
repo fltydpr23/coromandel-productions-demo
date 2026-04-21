@@ -34,7 +34,7 @@ export default function Hero() {
         {/* Dynamic Background Wrapper */}
         <motion.div 
           style={{ scale: smoothVideoScale, opacity: containerOpacity }}
-          className="absolute inset-0 z-0 origin-center"
+          className="absolute inset-0 z-0 origin-center will-change-transform"
         >
           <video
             autoPlay
@@ -75,11 +75,11 @@ export default function Hero() {
                 </span>
               </div>
 
-              <h1 className="font-serif text-7xl md:text-[10rem] lg:text-[14rem] font-normal leading-[0.8] text-foreground mb-12 tracking-tighter mix-blend-difference">
+              <h1 className="font-serif text-6xl xs:text-7xl md:text-[10rem] lg:text-[14rem] font-normal leading-[0.8] text-foreground mb-12 tracking-tighter mix-blend-difference">
                 STORIES <br />
-                <span className="italic font-light text-accent flex items-center justify-center lg:justify-start gap-8">
+                <span className="italic font-light text-accent flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-8">
                   UNBOUND
-                  <div className="hidden lg:block w-32 h-32 border border-white/10 rounded-full border-dashed animate-[spin_20s_linear_infinite]" />
+                  <div className="hidden md:block w-32 h-32 border border-white/10 rounded-full border-dashed animate-[spin_20s_linear_infinite]" />
                 </span>
               </h1>
 

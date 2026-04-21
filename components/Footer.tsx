@@ -18,9 +18,12 @@ export default function Footer() {
             >
               COROMANDEL<span className="text-primary italic ml-1">PRODUCTIONS</span>
             </Link>
-            <p className="text-muted max-w-sm leading-relaxed mb-8">
+            <p className="text-muted max-w-sm leading-relaxed mb-4">
               An award-winning video production house crafting cinematic legacies from Singapore. 
               Proud co-owners of Barn Media, UK.
+            </p>
+            <p className="font-serif text-lg text-primary italic mb-8">
+              Stories from the heart. Beyond the lens.
             </p>
             <div className="flex gap-6">
               {[

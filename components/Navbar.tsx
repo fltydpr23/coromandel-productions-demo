@@ -26,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? "py-4" : "py-10"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isScrolled ? "py-4" : "py-6 lg:py-10"}`}>
       <div className="container mx-auto px-6">
         <div className={`relative flex items-center justify-between px-8 py-2 rounded-full border transition-all duration-700 ${
           isScrolled 
@@ -128,7 +128,7 @@ export default function Navbar() {
                 <Globe size={16} />
                 <span className="text-xs uppercase tracking-widest">Global HQ — Singapore</span>
               </div>
-              <p className="font-serif text-xl italic text-foreground/80">"Beyond the Lens."</p>
+              <p className="font-serif text-xl italic text-foreground/80">"Stories from the heart. Beyond the lens."</p>
             </div>
           </motion.div>
         )}
