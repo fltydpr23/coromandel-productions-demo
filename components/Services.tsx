@@ -10,35 +10,35 @@ const services = [
     description: "Capturing the intensity, triumph, and soul of competition with top-tier cinematography.",
     icon: Trophy,
     category: "01ACTION",
-    color: "accent"
+    image: "/work-sports.png"
   },
   {
     title: "Corporate Identity",
     description: "Elevating brand identity through cinematic storytelling that connects with modern audiences.",
     icon: Building2,
     category: "02IDENTITY",
-    color: "primary"
+    image: "/work-corporate.png"
   },
   {
     title: "Impact Stories",
     description: "Films from the heart. Documenting stories that drive change and move the needle.",
     icon: Heart,
-    category: "03PURPOSE",
-    color: "hyper-violet"
+    category: "PURPOSE",
+    image: "/work-documentary.png"
   },
   {
     title: "Documentaries",
     description: "In-depth, unscripted narratives that explore the human condition beyond the lens.",
     icon: Film,
-    category: "04NARRATIVE",
-    color: "accent"
+    category: "NARRATIVE",
+    image: "/work-bat-maker.png"
   },
   {
     title: "Original Content",
     description: "Conceptualizing and producing original IP and scripted content that pushes boundaries.",
     icon: Sparkles,
-    category: "05CREATION",
-    color: "primary"
+    category: "CREATION",
+    image: "/work-sports.png"
   }
 ];
 
@@ -70,8 +70,8 @@ export default function Services() {
               From action-packed sports to intimate impact stories.
             </p>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             whileHover={{ scale: 1.1 }}
             className="hidden lg:block w-52 h-52 relative group cursor-pointer"
           >
@@ -113,14 +113,34 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative bg-background/80 backdrop-blur-md p-12 lg:p-20 flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-24 transition-all duration-700 hover:bg-surface-2 cursor-pointer border-b border-white/5 last:border-b-0"
+              className="group relative bg-background/80 backdrop-blur-md p-12 lg:p-20 flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-24 transition-all duration-700 hover:bg-surface-2 cursor-pointer border-b border-white/5 last:border-b-0 overflow-hidden"
             >
-              <div className="relative flex items-center justify-center w-24 h-24 lg:w-32 lg:h-32 shrink-0">
+              {/* Liquid Image Reveal Background */}
+              <AnimatePresence>
+                {hoveredIndex === index && (
+                  <motion.div
+                    initial={{ clipPath: "inset(0 100% 0 0)" }}
+                    animate={{ clipPath: "inset(0 0% 0 0)" }}
+                    exit={{ clipPath: "inset(0 0 0 100%)" }}
+                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 z-0"
+                  >
+                    <img 
+                      src={service.image} 
+                      alt={service.title}
+                      className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <div className="relative flex items-center justify-center w-24 h-24 lg:w-32 lg:h-32 shrink-0 z-10">
                 <div className={`absolute inset-0 bg-primary/10 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700`} />
                 <service.icon className="w-12 h-12 lg:w-16 lg:h-16 text-accent group-hover:text-primary transition-all duration-700 relative z-10" />
               </div>
-              
-              <div className="flex-1">
+
+              <div className="flex-1 z-10">
                 <span className="text-[10px] uppercase tracking-[0.5em] text-primary mb-6 block font-bold">
                   {service.category}
                 </span>
@@ -129,7 +149,7 @@ export default function Services() {
                 </h3>
               </div>
 
-              <div className="max-w-sm ml-auto">
+              <div className="max-w-sm ml-auto z-10">
                 <p className="text-lg text-muted group-hover:text-foreground transition-colors duration-700 leading-relaxed font-light mb-8">
                   {service.description}
                 </p>
@@ -139,10 +159,10 @@ export default function Services() {
               </div>
 
               {/* Animated Accent Line */}
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top" />
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top z-20" />
             </motion.div>
           ))}
-          
+
           {/* Custom CTA Row */}
           <div className="p-20 bg-primary/90 flex flex-col lg:flex-row items-center justify-between gap-12 group cursor-pointer transition-all duration-700 hover:bg-primary">
             <h3 className="font-serif text-5xl md:text-7xl text-background tracking-tighter leading-none">
