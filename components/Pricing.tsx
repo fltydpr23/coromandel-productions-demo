@@ -78,15 +78,15 @@ export default function Pricing() {
               <span className="italic text-primary">VALUATION.</span>
             </h2>
             <p className="text-muted text-xl leading-relaxed max-w-xl font-light">
-              High-end production is not a commodity. Every frame we capture is tailored to your brand&apos;s unique velocity. We don&apos;t use templates, and we don&apos;t use fixed price tags.
+              Cinematic storytelling is an inherently bespoke endeavor. We approach every project as a unique narrative challenge, crafting tailored production frameworks that align precisely with your brand&apos;s ambitions and technical scope.
             </p>
           </div>
           
           <div className="bg-surface-2 border border-white/5 p-8 rounded-3xl backdrop-blur-md max-w-xs">
             <Calculator className="text-primary mb-4" size={24} />
-            <p className="text-[10px] uppercase tracking-widest text-white/40 font-bold mb-4">Why no fixed prices?</p>
+            <p className="text-[10px] uppercase tracking-widest text-white/40 font-bold mb-4">The Production Framework</p>
             <p className="text-xs text-white/60 leading-relaxed italic">
-              "We believe in budget transparency, but fixed costs limit creativity. We build our quotes based on the specific gear, crew, and narrative complexity your story demands."
+              "We prioritize financial transparency while honoring the creative process. Every quote is engineered around the specific technical requirements, crew expertise, and post-production depth your narrative demands."
             </p>
           </div>
         </div>
