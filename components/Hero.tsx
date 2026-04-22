@@ -109,21 +109,36 @@ export default function Hero() {
                 <div className="flex items-start gap-8 max-w-xl">
                   {/* Architectural Anchor Line */}
                   <motion.div 
-                    initial={{ height: 0 }}
-                    animate={{ height: "auto" }}
-                    transition={{ duration: 1.5, delay: 1 }}
-                    className="w-px bg-gradient-to-b from-primary via-primary/50 to-transparent self-stretch hidden md:block" 
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="w-px bg-gradient-to-b from-primary via-primary/50 to-transparent self-stretch hidden md:block origin-top" 
                   />
                   
-                  <p className="text-muted text-xl md:text-2xl leading-relaxed text-center lg:text-left font-light flex flex-wrap gap-x-[0.3em]">
+                  <motion.p 
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.05,
+                          delayChildren: 0.8
+                        }
+                      }
+                    }}
+                    className="text-muted text-xl md:text-2xl leading-relaxed text-center lg:text-left font-light flex flex-wrap gap-x-[0.3em]"
+                  >
                     {"India's premiere cinematic production studio since 2016. High-velocity storytelling for Sports, Corporate, and Social Impact.".split(" ").map((word, i) => (
                       <motion.span
                         key={i}
-                        initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        variants={{
+                          hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
+                          visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                        }}
                         transition={{ 
                           duration: 0.8, 
-                          delay: 1.2 + (i * 0.05),
                           ease: [0.16, 1, 0.3, 1]
                         }}
                         className="inline-block"
@@ -131,8 +146,9 @@ export default function Hero() {
                         {word}
                       </motion.span>
                     ))}
-                  </p>
+                  </motion.p>
                 </div>
+
 
 
                 <div className="flex flex-wrap items-center gap-8">
