@@ -217,8 +217,34 @@ export default function Contact() {
                   </motion.div>
                 )}
               </AnimatePresence>
+
+              {/* Cinematic Maps Embed */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="mt-12 w-full h-64 rounded-3xl overflow-hidden border border-white/5 relative group"
+              >
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-10" />
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.819121404104!2d103.84364117621406!3d1.2760232617757426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da191297e68237%3A0xc1542f74d0d08796!2sInternational%20Plaza!5e0!3m2!1sen!2ssg!4v1713766000000!5m2!1sen!2ssg" 
+                  className="w-full h-full grayscale invert opacity-60 contrast-125"
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                <div className="absolute bottom-4 left-4 z-20">
+                  <div className="bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-3">
+                    <MapPin size={12} className="text-primary" />
+                    <span className="text-[9px] uppercase tracking-widest text-white/80 font-bold">10 Anson Rd, Singapore 079903</span>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
