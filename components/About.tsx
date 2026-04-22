@@ -35,7 +35,7 @@ export default function About() {
                 Launched in 2016 by award-winning filmmaker <span className="text-foreground font-medium">Veeru Murugappan</span>, 
                 Coromandel Productions emerged with a singular vision: to tell stories that resonate 
                 beyond the surface level. Today, we are India&apos;s specialist studio based in 
-                <span className="text-foreground font-medium"> Singapore and Chennai.</span>
+                <span className="text-foreground font-medium"> Singapore, Chennai, and Bengaluru.</span>
               </p>
               <p>
                 In 2020, we solidified our international presence by becoming <span className="text-primary italic font-medium">co-owners of Barn Media</span>, 
