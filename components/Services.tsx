@@ -70,11 +70,11 @@ export default function Services() {
               <span className="italic text-accent">CRAFT.</span>
             </h2>
             <p className="text-muted text-xl leading-relaxed max-w-xl font-light mb-12">
-              We leverage a decade of experience and global reach to add value wherever the story leads. 
+              We leverage a decade of experience and global reach to add value wherever the story leads.
               From action-packed sports to intimate impact stories.
             </p>
 
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.1 }}
               className="w-48 h-48 relative group cursor-pointer"
             >
@@ -92,7 +92,7 @@ export default function Services() {
                   </defs>
                   <text className="text-[6.5px] uppercase tracking-[0.3em] font-black fill-primary/30 group-hover:fill-primary transition-colors duration-700">
                     <textPath href="#circlePath">
-                      TRUTH BEYOND THE LENS • ESTABLISHED 2016 • CINEMATIC STORIES •
+                      TRUTH BEYOND THE LENS • ESTABLISHED 2016 •
                     </textPath>
                   </text>
                 </svg>
@@ -112,22 +112,22 @@ export default function Services() {
 
           {/* Final CTA Card */}
           <div className="min-w-[80vw] h-[70vh] bg-primary/90 flex flex-col items-center justify-center p-12 md:p-24 rounded-[3rem] shadow-2xl relative overflow-hidden group">
-             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.1),transparent)] group-hover:scale-150 transition-transform duration-1000" />
-             <h3 className="font-serif text-6xl md:text-[8rem] text-background tracking-tighter leading-none text-center relative z-10 mb-12">
-               HAVE A DIFFERENT <br /> <span className="italic">VISION?</span>
-             </h3>
-             <p className="text-xl md:text-2xl text-background/80 max-w-xl text-center font-medium relative z-10 mb-12">
-               We handle bespoke productions for agencies and brands worldwide.
-             </p>
-             <a href="#contact" className="relative z-10 px-16 py-8 bg-background text-primary rounded-full text-sm font-black uppercase tracking-[0.3em] hover:scale-105 active:scale-95 transition-all shadow-2xl">
-               Discuss Project
-             </a>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.1),transparent)] group-hover:scale-150 transition-transform duration-1000" />
+            <h3 className="font-serif text-6xl md:text-[8rem] text-background tracking-tighter leading-none text-center relative z-10 mb-12">
+              HAVE A DIFFERENT <br /> <span className="italic">VISION?</span>
+            </h3>
+            <p className="text-xl md:text-2xl text-background/80 max-w-xl text-center font-medium relative z-10 mb-12">
+              We handle bespoke productions for agencies and brands worldwide.
+            </p>
+            <a href="#contact" className="relative z-10 px-16 py-8 bg-background text-primary rounded-full text-sm font-black uppercase tracking-[0.3em] hover:scale-105 active:scale-95 transition-all shadow-2xl">
+              Discuss Project
+            </a>
           </div>
         </motion.div>
 
         {/* Progress Indicator */}
         <div className="absolute bottom-12 left-24 right-24 h-px bg-white/10 overflow-hidden">
-          <motion.div 
+          <motion.div
             style={{ scaleX: scrollYProgress }}
             className="h-full w-full bg-primary origin-left"
           />
@@ -175,29 +175,29 @@ function ServiceCard({ service, index }: { service: any, index: number }) {
         <div className="relative w-32 h-32 lg:w-48 lg:h-48 flex items-center justify-center">
           <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-1000" />
           <service.icon className="w-16 h-16 lg:w-24 lg:h-24 text-accent group-hover:text-primary transition-all duration-700 relative z-10" />
-          
+
           {/* Animated Circle for Icon */}
           <svg className="absolute inset-0 w-full h-full -rotate-90">
-             <circle 
-               cx="50%" cy="50%" r="48%" 
-               className="stroke-primary/20 fill-none" 
-               strokeWidth="1" 
-             />
-             <motion.circle 
-               cx="50%" cy="50%" r="48%" 
-               className="stroke-primary fill-none" 
-               strokeWidth="2"
-               strokeDasharray="100 100"
-               initial={{ strokeDashoffset: 100 }}
-               animate={{ strokeDashoffset: isHovered ? 0 : 100 }}
-               transition={{ duration: 1, ease: "easeInOut" }}
-             />
+            <circle
+              cx="50%" cy="50%" r="48%"
+              className="stroke-primary/20 fill-none"
+              strokeWidth="1"
+            />
+            <motion.circle
+              cx="50%" cy="50%" r="48%"
+              className="stroke-primary fill-none"
+              strokeWidth="2"
+              strokeDasharray="100 100"
+              initial={{ strokeDashoffset: 100 }}
+              animate={{ strokeDashoffset: isHovered ? 0 : 100 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            />
           </svg>
         </div>
       </div>
 
       {/* Interactive Liquid reveal accent line */}
-      <motion.div 
+      <motion.div
         initial={{ height: 0 }}
         animate={{ height: isHovered ? "100%" : 0 }}
         className="absolute left-0 bottom-0 w-2 bg-primary z-20"

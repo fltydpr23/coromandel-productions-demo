@@ -71,7 +71,7 @@ export default function Hero() {
               <div className="inline-flex items-center gap-3 mb-10 bg-white/5 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 <span className="text-primary uppercase tracking-[0.4em] text-[10px] font-bold py-1">
-                  Bangalore · Chennai · Singapore
+                  Chennai · Singapore
                 </span>
               </div>
 
