@@ -49,11 +49,11 @@ export default function Contact() {
       <div className="absolute -bottom-1/2 -right-1/4 w-[80%] h-full bg-accent/5 blur-[160px] rounded-full -z-10" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
-          <div className="lg:col-span-12 xl:col-span-5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+          <div className="lg:col-span-5">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="inline-flex items-center gap-3 mb-10 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full"
             >
@@ -63,24 +63,25 @@ export default function Contact() {
               </span>
             </motion.div>
 
-            <h2 className="font-serif text-7xl md:text-9xl text-foreground tracking-tighter leading-[0.85] mb-12">
-              LET'S START <br />
-              YOUR <span className="italic text-accent">LEGACY.</span>
+            <h2 className="font-serif text-7xl md:text-8xl lg:text-9xl text-foreground tracking-tighter leading-[0.85] mb-12">
+              LET&apos;S START <br />
+              YOUR <span className="italic text-primary">LEGACY.</span>
             </h2>
 
             <p className="text-muted text-xl mb-16 max-w-sm leading-relaxed font-light">
-              Booking for Q3 2026. Join the ranks of global brands shaping narratives with us.
+              Booking for Q4 2026. Join the ranks of global brands shaping narratives with us.
             </p>
 
-            <div className="space-y-10">
+            <div className="space-y-8">
               {contactInfo.map((info) => (
                 <motion.div 
                   key={info.id}
                   onMouseEnter={() => setHoveredInfo(info.id)}
                   onMouseLeave={() => setHoveredInfo(null)}
+                  onClick={() => info.id === 'location' && window.open('https://maps.app.goo.gl/BFdDVKrCqVfYS7iT6', '_blank')}
                   className="group flex items-center gap-8 cursor-pointer"
                 >
-                  <div className="relative w-16 h-16 shrink-0 border border-border rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:border-primary group-hover:bg-primary/5 overflow-hidden">
+                  <div className="relative w-16 h-16 shrink-0 border border-white/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:border-primary group-hover:bg-primary/5 overflow-hidden">
                     <info.icon size={20} className="text-foreground group-hover:text-primary transition-colors duration-500" />
                     {hoveredInfo === info.id && (
                       <motion.div 
@@ -91,8 +92,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-[0.4em] text-primary font-bold mb-1">{info.label}</p>
-                    <p className="font-serif text-3xl text-foreground group-hover:text-accent transition-colors flex items-center gap-3">
+                    <p className="font-serif text-2xl md:text-3xl text-foreground group-hover:text-primary transition-colors flex items-center gap-3">
                       {info.value}
+                      {info.id === 'location' && <ArrowUpRight size={16} className="text-primary opacity-0 group-hover:opacity-100 transition-all" />}
                     </p>
                     <p className="text-[10px] uppercase tracking-[0.2em] text-muted mt-2">{info.sub}</p>
                   </div>
@@ -101,12 +103,13 @@ export default function Contact() {
             </div>
           </div>
 
+
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className="lg:col-span-12 xl:col-span-7"
+            className="lg:col-span-7"
           >
             <div className="bg-surface-2 border border-white/5 p-12 md:p-20 rounded-[3rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] relative overflow-hidden group min-h-[600px] flex flex-col justify-center">
               {/* Internal Accent Glow */}
