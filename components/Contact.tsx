@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Zap } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Zap, ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
