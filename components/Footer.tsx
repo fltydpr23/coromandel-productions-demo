@@ -104,7 +104,7 @@ export default function Footer() {
             &copy; {currentYear} Coromandel Productions. All Cinematic Rights Reserved.
           </p>
           <div className="flex items-center gap-4">
-             <span className="text-[10px] uppercase tracking-[0.3em] text-muted decoration-primary underline underline-offset-4">Singapore · Chennai · Bengaluru</span>
+             <span className="text-[10px] uppercase tracking-[0.3em] text-muted decoration-primary underline underline-offset-4">Singapore · Chennai</span>
              <span className="text-[10px] uppercase tracking-[0.3em] text-muted underline underline-offset-4 decoration-primary">UK Partnership Studio</span>
           </div>
 

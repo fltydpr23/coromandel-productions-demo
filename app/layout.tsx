@@ -15,18 +15,16 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Coromandel Productions | Sports & Corporate Video Production | Singapore · Chennai · Bengaluru",
+  title: "Coromandel Productions | Sports & Corporate Video Production | Singapore · Chennai",
   description:
-    "Award-winning cinematic production studio founded in 2016. We craft sports films, corporate documentaries and social impact stories for global brands — trusted by ICC, Infosys and the World Bank. Based in Singapore, Chennai and Bengaluru. Booking Q4 2026.",
+    "Award-winning cinematic production studio founded in 2016. We craft sports films, corporate documentaries and social impact stories for global brands — trusted by ICC, Infosys and the World Bank. Based in Singapore and Chennai. Booking Q4 2026.",
   keywords: [
     "video production company Chennai",
     "video production company Singapore",
-    "video production company Bengaluru",
     "corporate film makers Chennai",
     "sports video production India",
     "cinematic storytelling Singapore",
     "documentary production Chennai",
-    "documentary production Bengaluru",
   ],
   openGraph: {
     title: "Coromandel Productions — Cinematic Stories for Global Brands",
