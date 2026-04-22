@@ -34,8 +34,8 @@ export default function Navbar() {
             : "bg-transparent border-transparent"
         }`}>
           {/* Logo Section */}
-          <div className="flex items-center gap-4 group cursor-pointer">
-            <div className="relative w-40 h-16 transition-transform duration-500 group-hover:scale-105">
+          <div className="flex items-center gap-6 group cursor-pointer">
+            <div className="relative w-32 h-12 transition-transform duration-500 group-hover:scale-105">
               <Image
                 src="/logo.png"
                 alt="Coromandel Productions"
@@ -43,6 +43,14 @@ export default function Navbar() {
                 className="object-contain"
                 priority
               />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-serif text-xl tracking-tighter leading-none text-foreground group-hover:text-primary transition-colors">
+                COROMANDEL
+              </span>
+              <span className="text-[8px] uppercase tracking-[0.5em] text-muted font-black mt-1">
+                PRODUCTIONS
+              </span>
             </div>
           </div>
 
@@ -94,13 +102,23 @@ export default function Navbar() {
             className="fixed inset-0 bg-background/95 backdrop-blur-3xl z-50 flex flex-col p-12 lg:hidden"
           >
             <div className="flex justify-between items-center mb-20">
-              <div className="relative w-40 h-12">
-                <Image
-                  src="/logo.png"
-                  alt="Coromandel"
-                  fill
-                  className="object-contain"
-                />
+              <div className="flex items-center gap-4">
+                <div className="relative w-24 h-10">
+                  <Image
+                    src="/logo.png"
+                    alt="Coromandel"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-serif text-lg tracking-tighter leading-none text-foreground">
+                    COROMANDEL
+                  </span>
+                  <span className="text-[7px] uppercase tracking-[0.4em] text-muted font-black">
+                    PRODUCTIONS
+                  </span>
+                </div>
               </div>
               <button onClick={() => setIsMobileMenuOpen(false)}>
                 <X size={32} className="text-foreground" />
