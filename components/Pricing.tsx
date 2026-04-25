@@ -144,7 +144,7 @@ export default function Pricing() {
           <div className="bg-surface-2 border border-white/5 p-12 md:p-20 rounded-[3rem] backdrop-blur-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full" />
             
-            <h3 className="font-serif text-3xl md:text-4xl mb-12 text-center">Specialized <span className="italic text-primary">Capabillities.</span></h3>
+            <h3 className="font-serif text-3xl md:text-4xl mb-12 text-center">Specialized <span className="italic text-primary">Capabilities.</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
               {addons.map((addon) => (
                 <div key={addon.name} className="flex justify-between items-center pb-6 border-b border-white/5 group">
