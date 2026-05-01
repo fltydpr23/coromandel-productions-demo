@@ -7,9 +7,9 @@ import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { name: "Archive", href: "#work" },
   { name: "Services", href: "#services" },
   { name: "Studio", href: "#about" },
+  { name: "Process", href: "#process" },
   { name: "Contact", href: "#contact" },
 ];
 

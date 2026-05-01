@@ -2,7 +2,8 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { Trophy, Building2, Heart, Film, Sparkles, ArrowUpRight, Play } from "lucide-react";
+import { Trophy, Building2, Heart, Film, Sparkles, ArrowUpRight, Play, ArrowRight, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const services = [
   {
@@ -10,35 +11,40 @@ const services = [
     description: "Capturing the intensity, triumph, and soul of competition with top-tier cinematography.",
     icon: Trophy,
     category: "01 // ACTION",
-    image: "/work-sports.png"
+    image: "/work-sports.png",
+    href: "/services/sports",
   },
   {
     title: "Corporate Identity",
     description: "Elevating brand identity through cinematic storytelling that connects with modern audiences.",
     icon: Building2,
     category: "02 // IDENTITY",
-    image: "/work-corporate.png"
+    image: "/work-corporate.png",
+    href: "/services/corporate",
   },
   {
     title: "Impact Stories",
     description: "Films from the heart. Documenting stories that drive change and move the needle.",
     icon: Heart,
     category: "03 // PURPOSE",
-    image: "/work-documentary.png"
+    image: "/work-documentary.png",
+    href: "/services/impact-stories",
   },
   {
     title: "Documentaries",
     description: "In-depth, unscripted narratives that explore the human condition beyond the lens.",
     icon: Film,
     category: "04 // NARRATIVE",
-    image: "/work-bat-maker.png"
+    image: "/work-bat-maker.png",
+    href: "/services/documentaries",
   },
   {
     title: "Original Content",
     description: "Conceptualizing and producing original IP and scripted content that pushes boundaries.",
     icon: Sparkles,
     category: "05 // CREATION",
-    image: "/work-sports.png"
+    image: "/work-sports.png",
+    href: "/services/originals",
   }
 ];
 
@@ -73,6 +79,27 @@ export default function Services() {
               We leverage a decade of experience and global reach to add value wherever the story leads.
               From action-packed sports to intimate impact stories.
             </p>
+
+            {/* Scroll Navigation Cue */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5 }}
+              className="flex items-center gap-4 mt-4"
+            >
+              <span className="text-[9px] uppercase tracking-[0.5em] text-muted font-bold">Scroll to Explore</span>
+              <div className="flex gap-1">
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    animate={{ x: [0, 6, 0], opacity: [0.3, 1, 0.3] }}
+                    transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.2, ease: "easeInOut" }}
+                  >
+                    <ChevronRight size={14} className="text-primary" />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
             <motion.div
               whileHover={{ scale: 1.1 }}
@@ -125,12 +152,22 @@ export default function Services() {
           </div>
         </motion.div>
 
-        {/* Progress Indicator */}
-        <div className="absolute bottom-12 left-24 right-24 h-px bg-white/10 overflow-hidden">
-          <motion.div
-            style={{ scaleX: scrollYProgress }}
-            className="h-full w-full bg-primary origin-left"
-          />
+        {/* Progress Indicator + Panel Counter */}
+        <div className="absolute bottom-12 left-24 right-24 flex items-center gap-6">
+          <div className="relative flex-1 h-px bg-white/10 overflow-hidden">
+            <motion.div
+              style={{ scaleX: scrollYProgress }}
+              className="h-full w-full bg-primary origin-left"
+            />
+          </div>
+          <motion.span
+            style={{
+              opacity: useTransform(scrollYProgress, [0, 0.1], [0, 1])
+            }}
+            className="text-[9px] uppercase tracking-[0.4em] text-muted font-bold shrink-0"
+          >
+            {services.length} Capabilities
+          </motion.span>
         </div>
       </div>
     </section>
@@ -139,11 +176,13 @@ export default function Services() {
 
 function ServiceCard({ service, index }: { service: any, index: number }) {
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
 
   return (
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={() => router.push(service.href)}
       className="relative min-w-[80vw] h-[70vh] bg-surface-2 rounded-[3rem] border border-white/5 overflow-hidden group cursor-pointer flex flex-col md:flex-row shadow-2xl"
     >
       {/* Background Image Parallax */}
@@ -166,9 +205,13 @@ function ServiceCard({ service, index }: { service: any, index: number }) {
         <h3 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white group-hover:text-accent transition-all duration-700 tracking-tighter mb-8 leading-tight">
           {service.title}
         </h3>
-        <p className="text-lg md:text-xl text-muted group-hover:text-foreground transition-colors duration-700 leading-relaxed font-light">
+        <p className="text-lg md:text-xl text-muted group-hover:text-foreground transition-colors duration-700 leading-relaxed font-light mb-8">
           {service.description}
         </p>
+        <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+          <span className="text-[9px] uppercase tracking-[0.4em] text-primary font-black">View Work</span>
+          <ArrowRight size={14} className="text-primary" />
+        </div>
       </div>
 
       <div className="relative z-10 flex items-center justify-center p-12 md:p-20 md:w-1/2">

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Zap, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, Send, Zap, ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   const [hoveredInfo, setHoveredInfo] = useState<string | null>(null);
@@ -38,8 +38,7 @@ export default function Contact() {
 
   const contactInfo = [
     { id: "email", icon: Mail, label: "Email Us", value: "contact@coromandel-productions.com", sub: "Response within 24h" },
-    { id: "phone", icon: Phone, label: "Call Us", value: "+65 6812 5888", sub: "Singapore HQ" },
-    { id: "location", icon: MapPin, label: "Our Studio", value: "120 Robinson Rd, SG", sub: "Global Partnership" },
+    { id: "location", icon: MapPin, label: "Our Studio", value: "120 Robinson Rd, SG", sub: "Singapore HQ" },
   ];
 
   return (
@@ -68,8 +67,11 @@ export default function Contact() {
               YOUR <span className="italic text-primary">LEGACY.</span>
             </h2>
 
-            <p className="text-muted text-xl mb-16 max-w-sm leading-relaxed font-light">
+            <p className="text-muted text-xl mb-10 max-w-sm leading-relaxed font-light">
               Booking for Q4 2026. Join the ranks of global brands shaping narratives with us.
+            </p>
+            <p className="text-[9px] uppercase tracking-[0.5em] text-white/30 font-bold mb-16">
+              Prefer email for all initial enquiries.
             </p>
 
             <div className="space-y-8">
